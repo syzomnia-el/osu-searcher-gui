@@ -51,10 +51,13 @@ class SongList(List[Song]):
         super().__init__()
         if path is not None and os.path.exists(path):
             for i in os.listdir(path):
-                song = Song()
-                tmp, song.name = i.split(' - ', 1)
-                song.sid, song.author = tmp.split(' ', 1)
-                self.append(song)
+                try:
+                    song = Song()
+                    tmp, song.name = i.split(' - ', 1)
+                    song.sid, song.author = tmp.split(' ', 1)
+                    self.append(song)
+                except ValueError:
+                    pass
 
     def __len__(self) -> int:
         return super().__len__()
