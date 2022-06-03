@@ -30,6 +30,9 @@ if __name__ == '__main__':
                 set_path(config)
                 config, song_list = init()
                 continue
+            elif keyword == 'flush/.':
+                config, song_list = init()
+                continue
             else:
                 song_list.find(keyword).show()
             os.system('pause')
