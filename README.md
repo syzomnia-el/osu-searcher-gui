@@ -1,15 +1,15 @@
 # osu!searcher
 
-A local map searcher for osu!, quick for downloaded map searching without startup.
+osu! 的本地谱面查找器，无需启动 osu! 即可快速查找已下载的谱面。
 
-# Function
+# 功能
 
-- [x] View local maps.
-- [x] Filter maps by keyword.
-- [ ] Filter maps by keyword for specific conditions such as number, name, artist, mapper, etc.
+- [x] 查看本地谱面。
+- [x] 按关键字筛选谱面。
+- [ ] 对特定条件，如号码、姓名、曲师、谱师等，按关键字筛选谱面。
 
-# Usage
+# 使用
 
-1. Install [Python 3](https://www.python.org/downloads/) .
-2. Run with the following command: `python <PATH>/main.py`.
-3. When using for the first time, you need to enter the absolute path of the folder containing your maps first.
+1. 安装 [Python 3](https://www.python.org/downloads/) 。
+2. 使用以下命令来运行： `python <PATH>/main.py`。
+3. 首次使用时，需要先输入谱面所在文件夹的绝对路径。
