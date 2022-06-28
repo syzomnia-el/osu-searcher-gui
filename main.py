@@ -3,17 +3,17 @@ from data import SongList
 from config import Configuration
 
 
-def set_path(configuration: Configuration):
+def set_path(conf: Configuration):
     os.system('cls')
     print('path:')
-    configuration.path = input()
+    conf.path = input()
 
 
 def init():
-    configuration = Configuration()
-    while configuration.path is None:
-        set_path(configuration)
-    return configuration, SongList(configuration.path)
+    conf = Configuration()
+    while conf.path is None:
+        set_path(conf)
+    return conf, SongList(conf.path)
 
 
 if __name__ == '__main__':
@@ -24,14 +24,15 @@ if __name__ == '__main__':
             print(f'path: {config.path}')
             print('keyword:')
             keyword = input()
-            if keyword == 'exit/.':
-                exit()
-            elif keyword == 'path/.':
-                set_path(config)
-                config, song_list = init()
-                continue
-            elif keyword == 'flush/.':
-                config, song_list = init()
+            if keyword.endswith('/.'):
+                control = keyword.removesuffix('/.')
+                if control == 'exit':
+                    exit()
+                elif control == 'path':
+                    set_path(config)
+                    config, song_list = init()
+                elif control == 'flush':
+                    config, song_list = init()
                 continue
             else:
                 song_list.find(keyword).show()
