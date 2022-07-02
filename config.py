@@ -19,7 +19,7 @@ class Configuration:
             json.dump(self.__config, f)
 
     @property
-    def path(self):
+    def path(self) -> str:
         return self.__config['path']
 
     @path.setter

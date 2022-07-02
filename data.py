@@ -1,5 +1,6 @@
 import os
-from typing import List
+from collections import Counter
+from typing import Dict, List
 
 
 class Song:
@@ -7,10 +8,13 @@ class Song:
     __author: str
     __name: str
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.to_dict().__str__()
 
-    def __contains__(self, x: str):
+    def __eq__(self, o: object) -> bool:
+        return self.__sid == o.__sid
+
+    def __contains__(self, x: str) -> bool:
         x = x.lower()
         sid = self.__sid.lower()
         author = self.__author.lower()
@@ -18,15 +22,15 @@ class Song:
         return x in sid or x in author or x in name
 
     @property
-    def sid(self):
+    def sid(self) -> str:
         return self.__sid
 
     @property
-    def author(self):
+    def author(self) -> str:
         return self.__author
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self.__name
 
     @sid.setter
@@ -41,12 +45,11 @@ class Song:
     def name(self, name: str):
         self.__name = name
 
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, str]:
         return {'sid': self.__sid, 'author': self.__author, 'name': self.__name}
 
 
 class SongList(List[Song]):
-
     def __init__(self, path: str = None):
         super().__init__()
         if path is not None and os.path.exists(path):
@@ -83,3 +86,14 @@ class SongList(List[Song]):
             if key in i:
                 res.append(i)
         return res
+
+    def check(self):
+        count = 0
+        counter = dict(Counter(self))
+
+        print('list:')
+        for k, v in counter.items():
+            if v > 1:
+                count += 1
+                print(f'{k}: {v}')
+        print(f'total: {count}')
