@@ -11,8 +11,11 @@ class Song:
     def __str__(self) -> str:
         return self.to_dict().__str__()
 
-    def __eq__(self, o: object) -> bool:
-        return self.__sid == o.__sid
+    def __hash__(self) -> int:
+        return hash(self.sid)
+
+    def __eq__(self, other) -> bool:
+        return self.__sid == other.__sid
 
     def __contains__(self, x: str) -> bool:
         x = x.lower()
@@ -66,13 +69,16 @@ class SongList(List[Song]):
         return super().__len__()
 
     def __str__(self) -> str:
-        return [i.to_dict() for i in self].__str__()
+        return self.to_list().__str__()
 
     def __contains__(self, x: str) -> bool:
         for i in self:
             if x in i:
                 return True
         return False
+
+    def to_list(self):
+        return [i.to_dict() for i in self]
 
     def show(self):
         print('list:')
@@ -88,12 +94,11 @@ class SongList(List[Song]):
         return res
 
     def check(self):
-        count = 0
         counter = dict(Counter(self))
-
+        count = 0
         print('list:')
         for k, v in counter.items():
             if v > 1:
                 count += 1
-                print(f'{k}: {v}')
+                print(f'{{{k}: {v}}}')
         print(f'total: {count}')

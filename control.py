@@ -75,6 +75,7 @@ class Control:
         print('-', end=' ')
         for i in self.__commands.keys():
             print(i, end=' | ')
+        print()
 
     def parse(self):
         command = input()
