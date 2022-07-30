@@ -1,5 +1,5 @@
 import os
-from typing import Any, Dict
+from typing import Any, Dict, Tuple
 
 from data import SongList
 from config import Configuration
@@ -18,11 +18,12 @@ class Control:
 
     def __init__(self):
         self.__commands = {
-            'exit': self.exit,
-            'path': self.path,
-            'flush': self.flush,
             'check': self.check,
-            'find': self.find
+            'exit': self.exit,
+            'find': self.find,
+            'flush': self.flush,
+            'list': self.list,
+            'path': self.path
         }
         self.flush()
 
@@ -41,36 +42,17 @@ class Control:
             self.set_path()
         self.__song_list = SongList(self.__config.path)
 
-    def flush(self):
-        self.__config = Configuration()
-        while self.__config.path is None:
-            self.set_path()
-        self.__song_list = SongList(self.__config.path)
-
-    def set_path(self):
-        os.system('cls')
-        print('path:')
-        self.__config.path = input()
-
-    def find(self):
-        print('keyword:')
-        key = input()
-        self.__song_list.find(key).show()
-        os.system('pause')
-
-    def exit(self):
-        exit()
-
-    def path(self):
-        self.set_path()
-        self.flush()
-
-    def check(self):
-        self.__song_list.check()
-        os.system('pause')
+    def run(self):
+        try:
+            while True:
+                self.clear_screen()
+                self.prompt()
+                self.parse()
+        except (IOError, KeyboardInterrupt):
+            exit(1)
 
     def prompt(self):
-        print(f'path: {self.__config.path}')
+        self.print_path()
         print('command:')
         print('-', end=' ')
         for i in self.__commands.keys():
@@ -78,15 +60,61 @@ class Control:
         print()
 
     def parse(self):
-        command = input()
+        command, key = self.read_command()
         if command in self.__commands:
-            self.__commands.get(command)()
+            if command == 'find':
+                self.__commands.get(command)(key)
+            else:
+                self.__commands.get(command)()
 
-    def run(self):
-        try:
-            while True:
-                os.system('cls')
-                self.prompt()
-                self.parse()
-        except (IOError, KeyboardInterrupt):
-            pass
+    def check(self):
+        self.__song_list.check()
+        self.pause()
+
+    def find(self, key: str = ''):
+        self.__song_list.find(key).show()
+        self.pause()
+
+    def flush(self):
+        self.__config = Configuration()
+        while self.__config.path is None:
+            self.set_path()
+        self.__song_list = SongList(self.__config.path)
+
+    def list(self):
+        self.__song_list.show()
+        self.pause()
+
+    def print_path(self):
+        print(f'path: {self.__config.path}')
+
+    def set_path(self):
+        self.clear_screen()
+        self.print_path()
+        print('switch to:')
+        args = input()
+        if args != 'q':
+            self.__config.path = args
+
+    def path(self):
+        self.set_path()
+        self.flush()
+
+    @staticmethod
+    def clear_screen():
+        os.system('cls')
+
+    @staticmethod
+    def exit():
+        exit(0)
+
+    @staticmethod
+    def pause():
+        os.system('pause')
+
+    @staticmethod
+    def read_command() -> Tuple[str, str]:
+        args = input().strip().split(' ', 1)
+        command = args[0]
+        key = args[1].strip() if len(args) == 2 else ''
+        return command, key

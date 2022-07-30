@@ -38,15 +38,15 @@ class Song:
 
     @sid.setter
     def sid(self, sid: str):
-        self.__sid = sid
+        self.__sid = sid.strip()
 
     @author.setter
     def author(self, author: str):
-        self.__author = author
+        self.__author = author.strip()
 
     @name.setter
     def name(self, name: str):
-        self.__name = name
+        self.__name = name.strip()
 
     def to_dict(self) -> Dict[str, str]:
         return {'sid': self.__sid, 'author': self.__author, 'name': self.__name}
@@ -60,7 +60,7 @@ class SongList(List[Song]):
                 try:
                     song = Song()
                     tmp, song.name = i.split(' - ', 1)
-                    song.sid, song.author = tmp.split(' ', 1)
+                    song.sid, song.author = tmp.strip().split(' ', 1)
                     self.append(song)
                 except ValueError:
                     pass
@@ -87,11 +87,14 @@ class SongList(List[Song]):
         print(f'total: {len(self)}')
 
     def find(self, key: str = ''):
-        res = SongList()
+        if key == '':
+            print('keyword:')
+            key = input()
+        result = SongList()
         for i in self:
             if key in i:
-                res.append(i)
-        return res
+                result.append(i)
+        return result
 
     def check(self):
         counter = dict(Counter(self))

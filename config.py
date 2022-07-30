@@ -24,6 +24,7 @@ class Configuration:
 
     @path.setter
     def path(self, path: str):
-        self.__config['path'] = None if path.strip() == '' else path
+        path = path.strip()
+        self.__config['path'] = None if path == '' else path
         with open(self.__CONFIG_PATH, 'w') as f:
             json.dump(self.__config, f)
