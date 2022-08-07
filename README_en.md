@@ -1,5 +1,7 @@
 # osu!searcher
 
+[简体中文](README.md) | **English**
+
 ## Introduction
 
 osu!searcher is a local beatmap searcher for [osu!](https://osu.ppy.sh), quick for downloaded beatmap searching without
@@ -45,4 +47,5 @@ startup.
 
 ## License
 
-osu!searcher is licensed under the [MIT License](https://opensource.org/licenses/MIT). Please see [the license file]((https://github.com/syzomnia-el/osu-searcher/blob/main/LICENSE)) for more information.
+osu!searcher is licensed under the [MIT License](https://opensource.org/licenses/MIT). Please
+see [the license file](LICENSE) for more information.
