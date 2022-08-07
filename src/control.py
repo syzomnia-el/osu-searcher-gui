@@ -56,7 +56,7 @@ class Control:
         print('command:')
         print('-', end=' ')
         for i in self.__commands.keys():
-            print(i, end=' | ')
+            print(f'{i} <keyword>' if i == 'find' else i, end=' | ')
         print()
 
     def parse(self):
@@ -91,8 +91,8 @@ class Control:
     def set_path(self):
         self.clear_screen()
         self.print_path()
-        print('switch to:')
-        args = input()
+        print('switch to (enter `q` to cancel):')
+        args = input().lower()
         if args != 'q':
             self.__config.path = args
 
@@ -114,7 +114,7 @@ class Control:
 
     @staticmethod
     def read_command() -> Tuple[str, str]:
-        args = input().strip().split(' ', 1)
+        args = input().strip().lower().split(' ', 1)
         command = args[0]
         key = args[1].strip() if len(args) == 2 else ''
         return command, key
