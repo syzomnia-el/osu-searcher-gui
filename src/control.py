@@ -1,8 +1,8 @@
 import os
 from typing import Any, Dict, Tuple
 
-from data import SongList
 from config import Configuration
+from data import SongList
 
 
 class Control:

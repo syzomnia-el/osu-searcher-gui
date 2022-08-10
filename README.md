@@ -34,15 +34,15 @@ osu!searcher 是一个为 [osu!](https://osu.ppy.sh) 开发的本地谱面查找
 
 ## 命令
 
-|       命令        | 描述              |
-|:---------------:|:----------------|
-|      check      | 检查重复的谱面         | 
-|      exit       | 退出 osu!searcher |
-| find <keyword\> | 按关键词筛选谱面        |
-|      flush      | 刷新谱面信息缓存        |
-|      list       | 查看所有本地谱面        |
-|      path       | 修改谱面存储路径        |
+|       命令        |        描述        |
+|:---------------:|:----------------:|
+|      check      |     检查重复的谱面      | 
+|      exit       | 退出 osu!searcher  |
+| find <keyword\> |     按关键词筛选谱面     |
+|      flush      |     刷新谱面信息缓存     |
+|      list       |     查看所有本地谱面     |
+|      path       |     修改谱面存储路径     |
 
 ## 许可证
 
-osu!searcher 基于 [MIT License](https://opensource.org/licenses/MIT) 授予许可。详情请见 [许可证](LICENSE) 
+osu!searcher 基于 [MIT License](https://opensource.org/licenses/MIT) 授予许可。详情请见 [许可证](LICENSE)。 

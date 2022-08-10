@@ -36,14 +36,14 @@ startup.
 
 ## Commands
 
-|      Commands      | Description                          |
-|:------------------:|:-------------------------------------|
-|       check        | Check the duplicate beatmaps         | 
-|        exit        | Exit osu!searcher                    |
-|  find \<keyword\>  | Filter beatmaps by keywords          |
-|       flush        | Flush the beatmap information cache  |
-|        list        | View all local beatmaps              |
-|        path        | Reset the saved path of beatmaps     |
+|      Command      |              Description              |
+|:-----------------:|:-------------------------------------:|
+|       check       |     Check the duplicate beatmaps      | 
+|       exit        |           Exit osu!searcher           |
+| find \<keyword\>  |      Filter beatmaps by keywords      |
+|       flush       |  Flush the beatmap information cache  |
+|       list        |        View all local beatmaps        |
+|       path        |   Reset the saved path of beatmaps    |
 
 ## License
 
