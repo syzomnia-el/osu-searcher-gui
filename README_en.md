@@ -17,7 +17,6 @@ startup.
 ## Requirements
 
 - [Python 3.7](https://www.python.org/downloads) or later
-- Currently only tested on **Windows**, and may not work on other operating systems.
 
 ## Download
 

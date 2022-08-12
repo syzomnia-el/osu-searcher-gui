@@ -1,4 +1,6 @@
+import msvcrt
 import os
+import sys
 from typing import Any, Dict, Tuple
 
 from config import Configuration
@@ -71,6 +73,10 @@ class Control:
         self.__song_list.check()
         self.pause()
 
+    def exit(self):
+        self.clear_screen()
+        sys.exit(0)
+
     def find(self, key: str = ''):
         self.__song_list.find(key).show()
         self.pause()
@@ -102,15 +108,12 @@ class Control:
 
     @staticmethod
     def clear_screen():
-        os.system('cls')
-
-    @staticmethod
-    def exit():
-        exit(0)
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     @staticmethod
     def pause():
-        os.system('pause')
+        print('press any key to continue...')
+        msvcrt.getwche()
 
     @staticmethod
     def read_command() -> Tuple[str, str]:
