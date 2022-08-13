@@ -51,7 +51,7 @@ class Control:
                 self.prompt()
                 self.parse()
         except (IOError, KeyboardInterrupt):
-            exit(1)
+            sys.exit(1)
 
     def prompt(self):
         self.print_path()
@@ -113,7 +113,7 @@ class Control:
     @staticmethod
     def pause():
         print('press any key to continue...')
-        msvcrt.getwche()
+        msvcrt.getwch()
 
     @staticmethod
     def read_command() -> Tuple[str, str]:
