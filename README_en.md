@@ -9,9 +9,9 @@ startup.
 
 ## Features
 
-- [x] View local beatmaps.
-- [x] Filter beatmaps by keywords.
-- [x] Check the duplicate beatmaps.
+- [x] View local beatmaps
+- [x] Filter beatmaps by keywords
+- [x] Check the duplicate beatmaps
 - [ ] Filter beatmaps by keywords for specific conditions such as sid, name, artist, mapper, etc.
 
 ## Requirements
@@ -21,7 +21,7 @@ startup.
 ## Download
 
 - Clone the repository:
-  ```shell
+  ```bash
   git clone https://github.com/syzomnia-el/osu-searcher
   ```
 - You can also download the source code as a ZIP file.
@@ -35,16 +35,16 @@ startup.
 
 ## Commands
 
-|      Command      |              Description              |
-|:-----------------:|:-------------------------------------:|
-|       check       |     Check the duplicate beatmaps      | 
-|       exit        |           Exit osu!searcher           |
-| find \<keyword\>  |      Filter beatmaps by keywords      |
-|       flush       |  Flush the beatmap information cache  |
-|       list        |        View all local beatmaps        |
-|       path        |   Reset the saved path of beatmaps    |
+| Command              | Description                         |
+|----------------------|-------------------------------------|
+| check                | Check the duplicate beatmaps        | 
+| exit                 | Exit osu!searcher                   |
+| find &lt;keyword&gt; | Filter beatmaps by keywords         |
+| flush                | Flush the beatmap information cache |
+| list                 | View all local beatmaps             |
+| path                 | Reset the saved path of beatmaps    |
 
 ## License
 
-osu!searcher is licensed under the [MIT License](https://opensource.org/licenses/MIT). Please
-see [the license file](LICENSE) for more information.
+osu!searcher is licensed under [MIT License](https://opensource.org/licenses/MIT). Please view [license file](LICENSE)
+for more information.
