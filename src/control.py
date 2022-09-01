@@ -70,6 +70,7 @@ class Control:
                 self.__commands.get(command)()
 
     def check(self):
+        self.flush()
         self.__song_list.check()
         self.pause()
 
