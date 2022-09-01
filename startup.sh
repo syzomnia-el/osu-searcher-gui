@@ -1,6 +1,3 @@
-#!/bin/sh
-stty -echo
+#!/bin/bash
 cd "$(dirname "$0")/src" || exit
-py main.py
-cd ../
-stty echo
+python3 main.py

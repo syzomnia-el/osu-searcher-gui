@@ -1,4 +1,4 @@
-import msvcrt
+# -*- coding: utf-8 -*-
 import os
 import sys
 from typing import Any, Dict, Tuple
@@ -112,8 +112,7 @@ class Control:
 
     @staticmethod
     def pause():
-        print('press any key to continue...')
-        msvcrt.getwch()
+        input('Press Enter to continue . . .')
 
     @staticmethod
     def read_command() -> Tuple[str, str]:
