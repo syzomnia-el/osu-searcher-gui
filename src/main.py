@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from cli.app import OSSApplication
+from ui.app import OSSApplication
 
 if __name__ == '__main__':
     OSSApplication().run()
