@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 from collections import Counter
-from typing import Dict, List
+from typing import Dict, List, NewType
 
 
 class Song:
@@ -38,15 +38,15 @@ class Song:
         return self.__name
 
     @sid.setter
-    def sid(self, sid: str):
+    def sid(self, sid: str) -> None:
         self.__sid = sid.strip()
 
     @author.setter
-    def author(self, author: str):
+    def author(self, author: str) -> None:
         self.__author = author.strip()
 
     @name.setter
-    def name(self, name: str):
+    def name(self, name: str) -> None:
         self.__name = name.strip()
 
     def to_dict(self) -> Dict[str, str]:
@@ -54,7 +54,7 @@ class Song:
 
 
 class SongList(List[Song]):
-    def __init__(self, path: str = None):
+    def __init__(self, path: str = None) -> None:
         super().__init__()
         if path is not None and os.path.exists(path):
             for i in os.listdir(path):
@@ -78,31 +78,20 @@ class SongList(List[Song]):
                 return True
         return False
 
-    def to_list(self):
+    def to_list(self) -> List[Dict[str, str]]:
         return [i.to_dict() for i in self]
 
-    def show(self):
-        print('list:')
-        for i in self:
-            print(i)
-        print(f'total: {len(self)}')
-
-    def find(self, key: str = ''):
-        if key == '':
-            print('keyword:')
-            key = input()
+    def find(self, key: str = '') -> NewType('SongList', List[Song]):
         result = SongList()
         for i in self:
             if key in i:
                 result.append(i)
         return result
 
-    def check(self):
+    def check(self) -> NewType('SongList', List[Song]):
         counter = dict(Counter(self))
-        count = 0
-        print('list:')
+        result = SongList()
         for k, v in counter.items():
             if v > 1:
-                count += 1
-                print(f'{{{k}: {v}}}')
-        print(f'total: {count}')
+                result.append(k)
+        return result

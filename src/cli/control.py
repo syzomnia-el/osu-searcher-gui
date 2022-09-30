@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, NewType, Tuple
 
-from config import Configuration
-from data import SongList
+from conf.config import Configuration
+from data.data import SongList
 
 
 class Control:
@@ -13,12 +13,12 @@ class Control:
     __song_list: SongList
     __commands: Dict[str, Any]
 
-    def __new__(cls):
+    def __new__(cls) -> NewType('Control', object):
         if not cls.__instance:
             cls.__instance = super(Control, cls).__new__(cls)
         return cls.__instance
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.__commands = {
             'check': self.check,
             'exit': self.exit,
@@ -38,13 +38,13 @@ class Control:
         return self.__song_list
 
     @config.setter
-    def config(self, config: Configuration):
+    def config(self, config: Configuration) -> None:
         self.__config = config
         while self.__config.path is None:
             self.set_path()
         self.__song_list = SongList(self.__config.path)
 
-    def run(self):
+    def run(self) -> None:
         try:
             while True:
                 self.clear_screen()
@@ -53,7 +53,7 @@ class Control:
         except (IOError, KeyboardInterrupt):
             sys.exit(1)
 
-    def prompt(self):
+    def prompt(self) -> None:
         self.print_path()
         print('command:')
         print('-', end=' ')
@@ -61,7 +61,7 @@ class Control:
             print(f'{i} <keyword>' if i == 'find' else i, end=' | ')
         print()
 
-    def parse(self):
+    def parse(self) -> None:
         command, key = self.read_command()
         if command in self.__commands:
             if command == 'find':
@@ -69,33 +69,35 @@ class Control:
             else:
                 self.__commands.get(command)()
 
-    def check(self):
+    def check(self) -> None:
         self.flush()
-        self.__song_list.check()
+        self.print_list(self.__song_list.check())
         self.pause()
 
-    def exit(self):
+    def exit(self) -> None:
         self.clear_screen()
         sys.exit(0)
 
-    def find(self, key: str = ''):
-        self.__song_list.find(key).show()
+    def find(self, key: str = '') -> None:
+        if key == '':
+            print('keyword:')
+            key = input()
+        self.print_list(self.__song_list.find(key))
         self.pause()
 
-    def flush(self):
+    def flush(self) -> None:
         self.__config = Configuration()
         while self.__config.path is None:
             self.set_path()
         self.__song_list = SongList(self.__config.path)
 
-    def list(self):
-        self.__song_list.show()
-        self.pause()
+    def list(self) -> None:
+        self.print_list(self.__song_list)
 
-    def print_path(self):
+    def print_path(self) -> None:
         print(f'path: {self.__config.path}')
 
-    def set_path(self):
+    def set_path(self) -> None:
         self.clear_screen()
         self.print_path()
         print('switch to (enter `q` to cancel):')
@@ -103,16 +105,23 @@ class Control:
         if args != 'q':
             self.__config.path = args
 
-    def path(self):
+    def path(self) -> None:
         self.set_path()
         self.flush()
 
     @staticmethod
-    def clear_screen():
+    def print_list(song_list: SongList) -> None:
+        print('list:')
+        for i in song_list:
+            print(i)
+        print(f'total: {len(song_list)}')
+
+    @staticmethod
+    def clear_screen() -> None:
         os.system('cls' if os.name == 'nt' else 'clear')
 
     @staticmethod
-    def pause():
+    def pause() -> None:
         input('Press Enter to continue . . .')
 
     @staticmethod
