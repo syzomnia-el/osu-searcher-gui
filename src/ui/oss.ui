@@ -12,223 +12,205 @@
             <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>640</width>
-                <height>480</height>
+                <width>800</width>
+                <height>600</height>
             </rect>
         </property>
         <property name="minimumSize">
             <size>
-                <width>640</width>
-                <height>480</height>
+                <width>800</width>
+                <height>600</height>
             </size>
         </property>
         <property name="windowTitle">
             <string>osu!searcher</string>
         </property>
-        <widget class="QWidget" name="gridLayoutWidget">
-            <property name="geometry">
-                <rect>
-                    <x>10</x>
-                    <y>10</y>
-                    <width>621</width>
-                    <height>461</height>
-                </rect>
-            </property>
-            <layout class="QGridLayout" name="formGridLayout" rowstretch="0,0,0,0" columnstretch="0,0,0">
-                <property name="sizeConstraint">
-                    <enum>QLayout::SetDefaultConstraint</enum>
-                </property>
-                <property name="leftMargin">
-                    <number>0</number>
-                </property>
-                <property name="topMargin">
-                    <number>0</number>
-                </property>
-                <property name="rightMargin">
-                    <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>10</number>
-                </property>
-                <item row="1" column="2">
-                    <widget class="QPushButton" name="findButton">
-                        <property name="text">
-                            <string>Find</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="2" column="1">
-                    <widget class="QListView" name="beatmapView"/>
-                </item>
-                <item row="3" column="0">
-                    <layout class="QVBoxLayout" name="checkedBeatmapVerticalLayout">
-                        <item>
-                            <widget class="QLabel" name="checkedBeatmapLabel">
-                                <property name="text">
-                                    <string>Duplicate:</string>
-                                </property>
-                                <property name="alignment">
-                                    <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-                                </property>
-                            </widget>
-                        </item>
-                        <item>
-                            <widget class="QLabel" name="checkedBeatmapCountLabel">
-                                <property name="text">
-                                    <string>(0)</string>
-                                </property>
-                                <property name="alignment">
-                                    <set>Qt::AlignHCenter|Qt::AlignTop</set>
-                                </property>
-                            </widget>
-                        </item>
-                    </layout>
-                </item>
-                <item row="1" column="1">
-                    <widget class="QLineEdit" name="findEdit">
-                        <property name="minimumSize">
-                            <size>
-                                <width>464</width>
-                                <height>20</height>
-                            </size>
-                        </property>
-                        <property name="placeholderText">
-                            <string>Input keywords to find.</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="3" column="1">
-                    <widget class="QListView" name="checkedBeatmapView">
-                        <property name="minimumSize">
-                            <size>
-                                <width>0</width>
-                                <height>0</height>
-                            </size>
-                        </property>
-                    </widget>
-                </item>
-                <item row="3" column="2">
-                    <widget class="QPushButton" name="checkButton">
-                        <property name="text">
-                            <string>Check</string>
-                        </property>
-                    </widget>
-                </item>
-                <item row="2" column="0">
-                    <layout class="QVBoxLayout" name="beatmapVerticalLayout">
-                        <item>
-                            <widget class="QLabel" name="beatmapLabel">
-                                <property name="text">
-                                    <string>Beatmap:</string>
-                                </property>
-                                <property name="alignment">
-                                    <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-                                </property>
-                            </widget>
-                        </item>
-                        <item>
-                            <widget class="QLabel" name="beatmapCountLabel">
-                                <property name="text">
-                                    <string>(0)</string>
-                                </property>
-                                <property name="alignment">
-                                    <set>Qt::AlignHCenter|Qt::AlignTop</set>
-                                </property>
-                            </widget>
-                        </item>
-                    </layout>
-                </item>
-                <item row="1" column="0">
-                    <widget class="QLabel" name="findLabel">
-                        <property name="maximumSize">
-                            <size>
-                                <width>16777215</width>
-                                <height>16777215</height>
-                            </size>
-                        </property>
-                        <property name="layoutDirection">
-                            <enum>Qt::LeftToRight</enum>
-                        </property>
-                        <property name="text">
-                            <string>keyword:</string>
-                        </property>
-                        <property name="alignment">
-                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                        </property>
-                    </widget>
-                </item>
-                <item row="0" column="2">
-                    <widget class="QPushButton" name="flushButton">
-                        <property name="enabled">
-                            <bool>true</bool>
-                        </property>
-                        <property name="text">
-                            <string>Flush</string>
-                        </property>
-                        <property name="autoDefault">
-                            <bool>false</bool>
-                        </property>
-                    </widget>
-                </item>
-                <item row="0" column="1">
-                    <layout class="QHBoxLayout" name="pathHorizontalLayout">
-                        <property name="spacing">
-                            <number>5</number>
-                        </property>
-                        <item>
-                            <widget class="QLineEdit" name="pathEdit">
-                                <property name="text">
-                                    <string/>
-                                </property>
-                                <property name="placeholderText">
-                                    <string>Input the path of beatmaps saved, like '&lt;path&gt;/osu!/Songs)' .</string>
-                                </property>
-                            </widget>
-                        </item>
-                        <item>
-                            <widget class="QToolButton" name="pathButton">
-                                <property name="text">
-                                    <string>...</string>
-                                </property>
-                                <property name="popupMode">
-                                    <enum>QToolButton::InstantPopup</enum>
-                                </property>
-                            </widget>
-                        </item>
-                    </layout>
-                </item>
-                <item row="0" column="0">
-                    <widget class="QLabel" name="pathLabel">
-                        <property name="text">
-                            <string>Path:</string>
-                        </property>
-                        <property name="alignment">
-                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                        </property>
-                    </widget>
-                </item>
-                <item row="2" column="2">
-                    <widget class="QPushButton" name="showButton">
-                        <property name="text">
-                            <string>Show</string>
-                        </property>
-                    </widget>
-                </item>
-            </layout>
-            <zorder>checkButton</zorder>
-            <zorder>checkedBeatmapView</zorder>
-            <zorder>pathLabel</zorder>
-            <zorder>findLabel</zorder>
-            <zorder>findEdit</zorder>
-            <zorder>findButton</zorder>
-            <zorder>beatmapView</zorder>
-            <zorder>showButton</zorder>
-            <zorder>flushButton</zorder>
-        </widget>
+        <layout class="QGridLayout" name="formGridLayout">
+            <item row="0" column="0">
+                <layout class="QGridLayout" name="gridLayout">
+                    <item row="2" column="0">
+                        <layout class="QVBoxLayout" name="beatmapVerticalLayout">
+                            <item>
+                                <widget class="QLabel" name="beatmapLabel">
+                                    <property name="text">
+                                        <string>Beatmap:</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLabel" name="beatmapCountLabel">
+                                    <property name="text">
+                                        <string>(0)</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item row="0" column="0">
+                        <widget class="QLabel" name="pathLabel">
+                            <property name="text">
+                                <string>Path:</string>
+                            </property>
+                            <property name="alignment">
+                                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="3" column="1">
+                        <widget class="QTableView" name="checkedBeatmapView">
+                            <property name="sortingEnabled">
+                                <bool>true</bool>
+                            </property>
+                            <attribute name="horizontalHeaderStretchLastSection">
+                                <bool>true</bool>
+                            </attribute>
+                        </widget>
+                    </item>
+                    <item row="3" column="2">
+                        <widget class="QPushButton" name="checkButton">
+                            <property name="text">
+                                <string>Check</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="1" column="0">
+                        <widget class="QLabel" name="findLabel">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>16777215</width>
+                                    <height>16777215</height>
+                                </size>
+                            </property>
+                            <property name="layoutDirection">
+                                <enum>Qt::LeftToRight</enum>
+                            </property>
+                            <property name="text">
+                                <string>keyword:</string>
+                            </property>
+                            <property name="alignment">
+                                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="1" column="1">
+                        <widget class="QLineEdit" name="findEdit">
+                            <property name="minimumSize">
+                                <size>
+                                    <width>464</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                            <property name="placeholderText">
+                                <string>Input keywords to find.</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="2" column="2">
+                        <widget class="QPushButton" name="showButton">
+                            <property name="text">
+                                <string>Show</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="0" column="1">
+                        <layout class="QHBoxLayout" name="pathHorizontalLayout">
+                            <property name="spacing">
+                                <number>5</number>
+                            </property>
+                            <item>
+                                <widget class="QLineEdit" name="pathEdit">
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="placeholderText">
+                                        <string>Input the path of beatmaps saved, like '&lt;path&gt;/osu!/Songs)' .
+                                        </string>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QToolButton" name="pathButton">
+                                    <property name="text">
+                                        <string>...</string>
+                                    </property>
+                                    <property name="popupMode">
+                                        <enum>QToolButton::InstantPopup</enum>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item row="2" column="1">
+                        <widget class="QTableView" name="beatmapView">
+                            <property name="sortingEnabled">
+                                <bool>true</bool>
+                            </property>
+                            <attribute name="horizontalHeaderStretchLastSection">
+                                <bool>true</bool>
+                            </attribute>
+                        </widget>
+                    </item>
+                    <item row="3" column="0">
+                        <layout class="QVBoxLayout" name="checkedBeatmapVerticalLayout">
+                            <item>
+                                <widget class="QLabel" name="checkedBeatmapLabel">
+                                    <property name="text">
+                                        <string>Duplicate:</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QLabel" name="checkedBeatmapCountLabel">
+                                    <property name="text">
+                                        <string>(0)</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                    <item row="1" column="2">
+                        <widget class="QPushButton" name="findButton">
+                            <property name="text">
+                                <string>Find</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="0" column="2">
+                        <widget class="QPushButton" name="flushButton">
+                            <property name="enabled">
+                                <bool>true</bool>
+                            </property>
+                            <property name="text">
+                                <string>Flush</string>
+                            </property>
+                            <property name="autoDefault">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </item>
+        </layout>
     </widget>
+    <tabstops>
+        <tabstop>pathEdit</tabstop>
+        <tabstop>pathButton</tabstop>
+        <tabstop>flushButton</tabstop>
+        <tabstop>findEdit</tabstop>
+        <tabstop>findButton</tabstop>
+    </tabstops>
     <resources/>
     <connections/>
 </ui>

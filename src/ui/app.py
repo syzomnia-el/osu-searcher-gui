@@ -10,7 +10,7 @@ class OSSApplication:
     __app: QApplication
     __form: OSSForm
 
-    def __init__(self) -> None:
+    def __init__(self):
         self.__app = QApplication(sys.argv)
         self.__form = OSSForm()
 

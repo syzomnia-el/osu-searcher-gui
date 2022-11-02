@@ -1,22 +1,28 @@
 # -*- coding: utf-8 -*-
-from PySide6.QtGui import QStandardItem, QStandardItemModel
-from PySide6.QtWidgets import QFileDialog, QWidget
+from typing import List
 
-from conf.config import Configuration
-from data.data import SongList
+from PySide6.QtCore import QSize
+from PySide6.QtGui import QCloseEvent, QStandardItem, QStandardItemModel
+from PySide6.QtWidgets import QFileDialog, QMessageBox, QWidget
+
+from conf.config import Configuration, WindowSize
+from data.data import Song, SongList
 from ui.gui import Ui_Form
 
 
 class OSSForm(QWidget):
+    __HORIZONTAL_HEADER_LABELS: List[str]
     __ui: Ui_Form
     __config: Configuration
     __song_list: SongList
 
     def __init__(self) -> None:
         super().__init__()
+        self.__HORIZONTAL_HEADER_LABELS = list(Song().to_dict().keys())
         self.load_ui()
-        self.load_config()
         self.connect_actions()
+        self.load_config()
+        self.resize(QSize(self.__config.size.width, self.__config.size.height))
 
     @property
     def config(self) -> Configuration:
@@ -49,6 +55,15 @@ class OSSForm(QWidget):
         self.config = Configuration()
         self.__ui.pathEdit.setText(self.__config.path)
 
+    def closeEvent(self, event: QCloseEvent):
+        reply = QMessageBox.question(self, 'Warn', 'Exit?', QMessageBox.Yes, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            if not self.isMaximized():
+                self.__config.size = WindowSize(self.width(), self.height())
+            event.accept()
+        else:
+            event.ignore()
+
     def set_path(self):
         self.__config.path = self.__ui.pathEdit.text().strip().lower()
 
@@ -70,7 +85,7 @@ class OSSForm(QWidget):
         self.reload_ui()
 
     def load_beatmap(self, song_list: SongList):
-        model = self.get_list_model(song_list)
+        model = self.get_model(song_list)
         self.__ui.beatmapView.setModel(model)
         self.__ui.beatmapCountLabel.setText(f'({len(song_list)})')
 
@@ -83,11 +98,7 @@ class OSSForm(QWidget):
         self.load_beatmap(self.__song_list)
 
     def load_checked_beatmap(self, song_list: SongList):
-        if len(song_list) == 0:
-            model = QStandardItemModel()
-            model.setItem(0, QStandardItem('None'))
-        else:
-            model = self.get_list_model(song_list)
+        model = self.get_model(song_list)
         self.__ui.checkedBeatmapView.setModel(model)
         self.__ui.checkedBeatmapCountLabel.setText(f'({len(song_list)})')
 
@@ -95,10 +106,11 @@ class OSSForm(QWidget):
         self.flush()
         self.load_checked_beatmap(self.__song_list.check())
 
-    @staticmethod
-    def get_list_model(song_list: SongList) -> QStandardItemModel:
+    def get_model(self, song_list: SongList) -> QStandardItemModel:
         model = QStandardItemModel()
+        model.setHorizontalHeaderLabels(self.__HORIZONTAL_HEADER_LABELS)
         for i, v in enumerate(song_list.to_list()):
-            item = QStandardItem(v.__str__())
-            model.setItem(i, item)
+            for j, elem in enumerate(v.to_dict().values()):
+                item = QStandardItem(elem)
+                model.setItem(i, j, item)
         return model
