@@ -6,6 +6,9 @@
 
 osu!searcher 是一个为 [osu!](https://osu.ppy.sh) 开发的本地谱面查找工具，无需启动 osu! 即可快速查找已下载的谱面。
 
+这是具有 GUI 的版本。  
+如果你更喜欢命令行式交互操作，请从 [main](https://github.com/syzomnia-el/osu-searcher/tree/main) 分支中获取源码。
+
 ## 功能
 
 - [x] 查看本地谱面
@@ -16,12 +19,13 @@ osu!searcher 是一个为 [osu!](https://osu.ppy.sh) 开发的本地谱面查找
 ## 要求
 
 - [Python 3.7](https://www.python.org/downloads) 或更高版本
+- [PySide 6](https://doc.qt.io/qtforpython/quickstart.html)
 
 ## 下载
 
 - 使用以下命令将本仓库复制到本地：
   ```bash
-  git clone https://github.com/syzomnia-el/osu-searcher
+  git clone https://github.com/syzomnia-el/osu-searcher.git -b gui
   ```
 - 你也可以通过下载压缩包来获取。
 
@@ -30,17 +34,6 @@ osu!searcher 是一个为 [osu!](https://osu.ppy.sh) 开发的本地谱面查找
 1. 打开 osu!searcher 的所在目录。
 2. 运行 `startup.cmd`（或 `startup.sh`）脚本。
 3. 首次使用时，需要先输入谱面所在文件夹的**绝对路径**。
-
-## 命令
-
-| 命令                   | 描述              |
-|----------------------|-----------------|
-| check                | 检查重复的谱面         |
-| exit                 | 退出 osu!searcher |
-| find &lt;keyword&gt; | 按关键词筛选谱面        |
-| flush                | 刷新谱面信息缓存        |
-| list                 | 查看所有本地谱面        |
-| path                 | 修改谱面存储路径        |
 
 ## 许可证
 
