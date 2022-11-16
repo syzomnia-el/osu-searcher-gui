@@ -35,7 +35,7 @@ the [main](https://github.com/syzomnia-el/osu-searcher/tree/main) branch.
 
 1. Navigate to the directory of osu!searcher.
 2. Run the`startup.cmd`(or`startup.sh`) script.
-3. When using it for the first time, you need to enter the **absolute** path of the folder where your beatmaps are
+3. When using it for the first time, you need to enter the **absolute** path of the directory where your beatmaps are
    saved.
 
 ## License

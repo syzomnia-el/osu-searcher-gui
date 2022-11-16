@@ -33,7 +33,7 @@ osu!searcher 是一个为 [osu!](https://osu.ppy.sh) 开发的本地谱面查找
 
 1. 打开 osu!searcher 的所在目录。
 2. 运行 `startup.cmd`（或 `startup.sh`）脚本。
-3. 首次使用时，需要先输入谱面所在文件夹的**绝对路径**。
+3. 首次使用时，需要先输入谱面存储目录的**绝对路径**。
 
 ## 许可证
 
