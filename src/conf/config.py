@@ -28,7 +28,7 @@ class Configuration:
 
     @property
     def path(self) -> str:
-        return self.__config['path']
+        return self.__config.get('path', None)
 
     @path.setter
     def path(self, path: str) -> None:
@@ -39,9 +39,12 @@ class Configuration:
 
     @property
     def size(self) -> NewType('WindowSize', Any):
-        size = self.__config['size']
-        width = size['width']
-        height = size['height']
+        size = self.__config.get('size', {
+            'width': 800,
+            'height': 600
+        })
+        width = size.get('width', 800)
+        height = size.get('height', 600)
         return WindowSize(width, height)
 
     @size.setter
