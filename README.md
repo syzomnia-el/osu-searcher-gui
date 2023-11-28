@@ -6,8 +6,8 @@
 
 osu!searcher 是一个为 [osu!](https://osu.ppy.sh) 开发的本地谱面查找工具，无需启动 osu! 即可快速查找已下载的谱面。
 
-这是具有 GUI 的版本。  
-如果你更喜欢命令行式交互操作，请从 [main](https://github.com/syzomnia-el/osu-searcher/tree/main) 分支中获取源码。
+这是基于1.0.0版本构建的具有 GUI 的版本。  
+如果你更喜欢命令行式交互操作，请从 [osu-searcher](https://github.com/syzomnia-el/osu-searcher) 主仓库中获取源码。
 
 ## 功能
 
@@ -25,7 +25,7 @@ osu!searcher 是一个为 [osu!](https://osu.ppy.sh) 开发的本地谱面查找
 
 - 使用以下命令将本仓库复制到本地：
   ```bash
-  git clone https://github.com/syzomnia-el/osu-searcher.git -b gui
+  git clone https://github.com/syzomnia-el/osu-searcher-gui.git
   ```
 - 你也可以通过下载压缩包来获取。
 

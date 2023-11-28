@@ -4,12 +4,12 @@
 
 ## Introduction
 
-osu!searcher is a local beatmap searcher for [osu!](https://osu.ppy.sh), quick for downloaded beatmap searching without
+osu!searcher is a local beatmap searcher for [osu!](https://osu.ppy.sh), quick for downloaded beatmap searching without the
 startup.
 
-This is the version with a GUI.  
+This is the version with GUI built on version 1.0.0.
 If you prefer command-line interaction, get the source code from
-the [main](https://github.com/syzomnia-el/osu-searcher/tree/main) branch.
+the [osu-searcher](https://github.com/syzomnia-el/osu-searcher) repository.
 
 ## Features
 
@@ -27,7 +27,7 @@ the [main](https://github.com/syzomnia-el/osu-searcher/tree/main) branch.
 
 - Clone the repository:
   ```bash
-  git clone https://github.com/syzomnia-el/osu-searcher.git -b gui
+  git clone https://github.com/syzomnia-el/osu-searcher-gui.git
   ```
 - You can also download the source code as a ZIP file.
 
